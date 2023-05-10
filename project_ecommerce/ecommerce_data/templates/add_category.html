@@ -6,13 +6,20 @@
         <div class="card-body">
           <h4 class="card-title">Default form</h4>
           <p class="card-description"> Basic form layout </p>
-          <form class="forms-sample" method="post">
+          <form class="forms-sample" method="post" enctype="multipart/form-data">
             {%csrf_token%}
             {%for field in form %}
             
             <div class="form-group">
               <label for="exampleInputUsername1">{{field.label}}</label>
+              {{instance}}
+              {%if field.name == 'Image' or field.name == 'subcatimage' or field.name == 'catimage' %}
+              <div id="prod-image">
               {{field}}
+              </div>
+              {%else%} 
+              {{field}}
+              {%endif%} 
             </div>
             {%endfor%}
             <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
@@ -23,5 +30,17 @@
       </div>
     </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+      $(document).ready(function(){
 
+        console.log($("#prod-image"))
+        let url =$("#prod-image").find('a').attr('href')
+        console.log(url)
+        if (url!=undefined){
+
+          $("#prod-image").html("<br>Currently: <br><br><img style='width:50%' src='"+url+"'></img><br><br>Change: <br><br><input type='file' name='Image' accept='image/*'' id='id_Image'>")
+        }
+      })
+    </script>
 {%endblock%}

@@ -227,8 +227,8 @@
               </a>
               <div class="collapse" id="ui-basic">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/buttons.html">Manage Stocks</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/typography.html">Add Stock</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{%url 'manage_stocks'%}">Manage Stocks</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{%url 'add_stock'%}">Add Stock</a></li>
                 </ul>
               </div>
             </li> 
@@ -239,6 +239,20 @@
                 <i class="mdi mdi-format-list-bulleted menu-icon"></i>
               </a>
               <div class="collapse" id="ui-basic1">
+                <ul class="nav flex-column sub-menu">
+                  <li class="nav-item"> <a class="nav-link" href="{%url 'addcategory'%}">Add Category</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{%url 'addsubcategory'%}">Add Subcategory</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="{%url 'manage_categories'%}">Manage Categories</a></li>
+                </ul>
+              </div>
+            </li> 
+               <li class="nav-item">
+              <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic2" aria-expanded="false" aria-controls="ui-basic">
+                <span class="menu-title">CMS</span>
+                <i class="menu-arrow"></i>
+                <i class="mdi mdi-format-list-bulleted menu-icon"></i>
+              </a>
+              <div class="collapse" id="ui-basic2">
                 <ul class="nav flex-column sub-menu">
                   <li class="nav-item"> <a class="nav-link" href="{%url 'addcategory'%}">Add Category</a></li>
                   <li class="nav-item"> <a class="nav-link" href="{%url 'addsubcategory'%}">Add Subcategory</a></li>

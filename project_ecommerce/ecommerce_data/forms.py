@@ -1,5 +1,5 @@
 from django import forms
-from .models import Categories,SubCategories
+from .models import Categories,SubCategories,Products
 
 class CategoryForm(forms.ModelForm):
     class Meta:
@@ -13,3 +13,9 @@ class SubCategoryForm(forms.ModelForm):
         fields = "__all__"
 
     
+class StocksForm(forms.ModelForm):
+    sub_category = forms.ModelChoiceField(queryset=SubCategories.objects.all(),to_field_name="sub_category_name")
+    class Meta:
+        model = Products
+        fields = "__all__"
+

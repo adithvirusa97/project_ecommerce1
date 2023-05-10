@@ -3,17 +3,67 @@
 {%load static%}
 
 <div>
+  {%if categories %}
     <h3>Categories</h3><br>
 <div class="row">
    
     {%for cat in categories%}
-    <div class="col-md-3 stretch-card grid-margin">
+    <div class="col-md-3 stretch-card grid-margin" >
       <div class="card bg-gradient-info card-img-holder text-white">
-        <div class="card-body">
-          <img src="{%static 'assets/images/dashboard/circle.svg'%}" class="card-img-absolute" alt="circle-image" />
-          <h4 class="font-weight-normal mb-3">{{cat.category_name}} 
+        <div class="card-body" style="background-image: url('{{ cat.catimage.url }}');background-repeat: no-repeat;background-size: cover;min-height: 14rem;">
+          <a href="{% url 'edit_category' cat.pk%}" style="position: relative;
+          bottom: -99%;
+          left: -8%;
+          " class="inverted">
+            <i style="margin-right:10px;font-size: 1.5rem;" class="mdi mdi-border-color"></i>
+        </a>
+        <a href="{% url 'delete_category' cat.pk %}" style="position: relative;
+        bottom: -97%;
+        left: -14%;
+        " class="inverted">
+          <i style="margin-left:10px;font-size: 1.5rem;" class="mdi mdi-delete"></i></td>
+          </a> 
+          <!-- <img src="{{cat.catimage.url}}" class="card-img-absolute" alt="Image of {{cat.category_name}}" style="height: 60%;margin-top: 21%;border-radius: 5%;" /> -->
+          <h4 class="font-weight-normal mb-3 inverted">{{cat.category_name}} 
           </h4>
-          <!-- <h2 class="mb-5">45,6334</h2> -->
+          <h6 class="mb-5 inverted">{{cat.category_description}}</h6> 
+          <!-- <h6 class="card-text">Decreased by 10%</h6> -->
+        </div>
+      </div>
+    </div>
+    {%endfor%}
+    
+  </div>   
+  {%endif%} 
+  {%if subcategories %}
+<h3>Sub Categories</h3><br>
+<div class="row">
+   
+    {%for cat in subcategories%}
+    
+    <div class="col-md-3 stretch-card grid-margin" >
+      <div class="card bg-gradient-success card-img-holder text-white">
+        {%if cat.subcatimage %}
+        <div class="card-body" style="background-image: url('{{ cat.subcatimage.url }}');background-repeat: no-repeat;background-size: cover;min-height: 14rem;">
+          {%else%}
+          <div class="card-body" style="background-image: url('{{ cat.subcatimage }}');background-repeat: no-repeat;background-size: cover;min-height: 14rem;">
+            {%endif%}
+          <a href="{% url 'edit_subcategory' cat.pk%}" style="position: relative;
+         bottom: -99%;
+          left: -8%;
+          " class="inverted">
+            <i style="margin-right:10px;font-size: 1.5rem;" class="mdi mdi-border-color"></i>
+        </a>
+        <a href="{% url 'delete_subcategory' cat.pk %}" style="position: relative;
+        bottom: -97%;
+        left: -14%;
+        " class="inverted">
+          <i style="margin-left:10px;font-size: 1.5rem;" class="mdi mdi-delete"></i></td>
+          </a> 
+          <!-- <img src="{{cat.catimage.url}}" class="card-img-absolute" alt="Image of {{cat.category_name}}" style="height: 60%;margin-top: 21%;border-radius: 5%;" /> -->
+          <h4 class="font-weight-normal mb-3 inverted">{{cat.sub_category_name}} 
+          </h4>
+          <h6 class="mb-5 inverted">{{cat.category_description}}</h6> 
           <!-- <h6 class="card-text">Decreased by 10%</h6> -->
         </div>
       </div>
@@ -21,7 +71,8 @@
     {%endfor%}
     
   </div>    
-  <h3>Sub Categories</h3><br>
+  {%endif%} 
+  {% comment %} <h3>Sub Categories</h3><br>
 <div class="row">
     
     {%for subcat in subcategories%}
@@ -39,6 +90,13 @@
       {%endfor%}
     </div>
     
-  </div>    
-    
+  </div>     {% endcomment %}
+  
+
+  <style>
+    .inverted {
+      color: white; /* set the text color to white (or any other color you want) */
+      mix-blend-mode: difference; /* use difference blending to invert the colors */
+    }
+  </style>
 {%endblock%}
