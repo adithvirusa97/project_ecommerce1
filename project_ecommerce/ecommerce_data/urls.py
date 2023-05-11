@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import AdminHomepage,ViewUserData,ManageCategories,AddCategory,AddSubCategory,ManageStocks,AddStock,ModifyStocks,DeleteStocks,Homepage,CategoryEdit,SubCategoryEdit,CategoryDelete,SubCategoryDelete
+from .views import AdminHomepage,ViewUserData,ManageCategories,AddCategory,AddSubCategory,ManageStocks,AddStock,ModifyStocks,DeleteStocks,Homepage,CategoryEdit,SubCategoryEdit,CategoryDelete,SubCategoryDelete,Shop
 urlpatterns = [
     path('dashboard/', AdminHomepage.as_view(),name="dashboard"),
     path('all-users/', ViewUserData.as_view(),name="all_users"),
@@ -15,5 +15,6 @@ urlpatterns = [
     path("edit-subcategory/<int:id>",SubCategoryEdit.as_view(),name="edit_subcategory"),
     path("delete-category/<int:id>",CategoryDelete.as_view(),name="delete_category"),
     path("delete-subcategory/<int:id>",SubCategoryDelete.as_view(),name="delete_subcategory"),
+    path("shop/",Shop.as_view(),name="shop"),
     
 ]

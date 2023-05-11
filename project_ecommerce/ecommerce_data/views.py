@@ -194,3 +194,15 @@ class SubCategoryEdit(View):
             return redirect("manage_categories")
         else:
             return render(request,self.template,context)
+        
+
+
+class Shop(View):
+    template = 'shop.html'
+    def get(self,request):
+        context={}
+        categories = Categories.objects.all()
+        products = Products.objects.all()
+        context["categories"] = categories
+        context["products"] = products
+        return render(request,self.template,context)
